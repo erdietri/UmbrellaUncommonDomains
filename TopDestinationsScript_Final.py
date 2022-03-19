@@ -5,11 +5,6 @@ from time import time
 import zipfile
 import os.path
 
-organization_id = "7949881"
-destinations_url = "https://reports.api.umbrella.com/v2/organizations/" + organization_id + "/top-destinations/dns"
-client_id = "691080aa96d44bd6bec90fb846b3d2d1"
-client_secret = "0cf486104a3f4f8799a37c19615b8c23"
-token_url = "https://management.api.umbrella.com/auth/v2/oauth2/token"
 
 # Retrieve access_token from Umbrella Management API; lasts 1 hour.
 def get_access_token():
@@ -73,10 +68,14 @@ def get_top_million():
     
 # Iterates over the top 1 million csv_file to determine if any Top Destinations do not match; returns those that do not match.
 def iterator(f1, f2):
-    with open ("dest_list.csv", 'r') as f1, open("top-1m.csv", 'r') as f2:
+    f1path = "C:\\dest_list.csv"
+    f2path = "C:\\top-1m.csv"
+    with open (f1path, 'r') as f1, open(f2path, 'r') as f2:
         fileone = f1.readlines()
-        filetwo = f2.readlines() 
-    with open("C:\\differences.csv", 'w') as output: 
+        filetwo = f2.readlines()
+        
+    finalpath = "C:\\differences.csv"
+    with open(finalpath, 'w') as output: 
         for line in fileone: 
             if line not in filetwo: 
                 output.write(line)  
@@ -89,4 +88,4 @@ top_million = get_top_million()
 access_token = get_access_token()
 response_data = get_top_destinations(access_token)
 csvfile = write_top_destinations(response_data)
-#output = iterator(f1="C:\\dest_list.csv",f2="C:\\top-1m.csv")
+output = iterator(f1=csvfile,f2=top_million)
