@@ -42,50 +42,69 @@ def get_top_destinations(access_token):
 # Write each domain in Top Destinations as a new line in a CSV.
 def write_top_destinations(response_data):
 
-        csvfile = open('C:\\dest_list.csv', 'w')
+    dest_list = []
+    for domain in response_data['data']: 
+        dest_list.append(domain['domain'])
+    csvfile = open('C:\\dest_list.csv', 'w')
+    with open('C:\\dest_list.csv', 'w', newline='') as csvfile: 
         filewriter = csv.writer(csvfile, delimiter=',',
-                    quotechar='|', quoting=csv.QUOTE_MINIMAL)
-        for domain in response_data['data']: 
-            print(domain['domain'])
-            filewriter.writerows(domain['domain'])
+            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        for domain in dest_list: 
+            filewriter.writerow([domain])
         csvfile.close()
         
-        return csvfile
+    return csvfile
             
 # Download the Umbrella top 1 million destinations to C: and unzip file. 
 def get_top_million(): 
     file_path = 'C:\\'
     get_file = requests.get("http://s3-us-west-1.amazonaws.com/umbrella-static/top-1m.csv.zip")
-    top_million = os.path.join(file_path, 'top-1m.csv.zip')
+    top_million_zip = os.path.join(file_path, 'top-1m.csv.zip')
+    top_million = os.path.join(file_path, 'top-1m.csv')
     
-    with open(top_million, 'wb') as f: 
+    with open(top_million_zip, 'wb') as f: 
         f.write(get_file.content)
         
-    with zipfile.ZipFile(top_million, 'r') as zip_ref: 
+    with zipfile.ZipFile(top_million_zip, 'r') as zip_ref: 
         zip_ref.extractall(file_path)
-
-    return top_million       
+        
+    #with open(top_million, 'w') as edit: 
+    data = pandas.read_csv(top_million)
+    first_column = data.columns[0]
+    # Delete first
+    data = data.drop([first_column], axis=1)
+    data.to_csv(top_million, index=False)
+    return data       
     
 # Iterates over the top 1 million csv_file to determine if any Top Destinations do not match; returns those that do not match.
-def iterator(f1, f2):
+def iterator():
     f1path = "C:\\dest_list.csv"
     f2path = "C:\\top-1m.csv"
-    with open (f1path, 'r') as f1, open(f2path, 'r') as f2:
-        fileone = f1.readlines()
-        filetwo = f2.readlines()
+    
+    #df1 = pandas.read_csv("C:\\dest_list.csv")
+    #df2 = pandas.read_csv("C:\\top-1m.csv")
+    #a = df1[df1.eq(df2).all(axis=1) == False]
+    #a.index += 1
+    #result = a.to_string(index=False)
         
     finalpath = "C:\\differences.csv"
-    with open(finalpath, 'w') as output: 
-        for line in fileone: 
+    with open(finalpath, 'w') as output:
+        fileone = (open(f1path)).readlines()
+        filetwo = (open(f2path)).readlines()
+        for line in fileone:
+            print(line)
             if line not in filetwo: 
-                output.write(line)  
-    #file_path = 'C:\\differences.csv'
-    #differences = os.path.join(file_path, 'differences.csv')
-    print(output)
+                output.write(line)
+        #for line in fileone: 
+            #if line not in filetwo: 
+                #output.write(line)  
+        #file_path = 'C:\\differences.csv'
+        #differences = os.path.join(file_path, 'differences.csv')
+        print(output)
     return output
 
-top_million = get_top_million()
+final = get_top_million()
 access_token = get_access_token()
 response_data = get_top_destinations(access_token)
 csvfile = write_top_destinations(response_data)
-output = iterator(f1=csvfile,f2=top_million)
+output = iterator()
