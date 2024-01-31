@@ -3,6 +3,7 @@ import csv
 from datetime import time 
 from time import time
 import zipfile
+import pandas
 import os.path
 
 
@@ -38,6 +39,14 @@ def get_top_destinations(access_token):
     response_data = top_destinations.json()  
     print(response_data)  
     return response_data
+
+# Check OS type and set file path accordingly.
+def check_os():
+    if os.name == 'nt':
+        file_path = 'C:\\'
+    else:
+        file_path = '/tmp/'
+    return file_path
         
 # Write each domain in Top Destinations as a new line in a CSV.
 def write_top_destinations(response_data):
@@ -45,8 +54,8 @@ def write_top_destinations(response_data):
     dest_list = []
     for domain in response_data['data']: 
         dest_list.append(domain['domain'])
-    csvfile = open('C:\\dest_list.csv', 'w')
-    with open('C:\\dest_list.csv', 'w', newline='') as csvfile: 
+    csvfile = open('{file_path}dest_list.csv', 'w')
+    with open('{file_path}dest_list.csv', 'w', newline='') as csvfile: 
         filewriter = csv.writer(csvfile, delimiter=',',
             quotechar='|', quoting=csv.QUOTE_MINIMAL)
         for domain in dest_list: 
@@ -61,7 +70,7 @@ def get_top_million():
     get_file = requests.get("http://s3-us-west-1.amazonaws.com/umbrella-static/top-1m.csv.zip")
     top_million_zip = os.path.join(file_path, 'top-1m.csv.zip')
     top_million = os.path.join(file_path, 'top-1m.csv')
-    
+
     with open(top_million_zip, 'wb') as f: 
         f.write(get_file.content)
         
@@ -78,8 +87,8 @@ def get_top_million():
     
 # Iterates over the top 1 million csv_file to determine if any Top Destinations do not match; returns those that do not match.
 def iterator():
-    f1path = "C:\\dest_list.csv"
-    f2path = "C:\\top-1m.csv"
+    f1path = "{file_path}dest_list.csv"
+    f2path = "{file_path}top-1m.csv"
     
     #df1 = pandas.read_csv("C:\\dest_list.csv")
     #df2 = pandas.read_csv("C:\\top-1m.csv")
