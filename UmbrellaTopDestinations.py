@@ -4,8 +4,14 @@ from datetime import time
 from time import time
 import zipfile
 import pandas
+import requests
 import os.path
 
+client_id = os.environ['CLIENT_ID']
+client_secret = os.environ['CLIENT_SECRET']
+token_url = os.environ['TOKEN_URL']
+# Need to change script for updated API reference: https://developer.cisco.com/docs/cloud-security/#!api-reference-reports-overview/umbrella-api-reports-endpoints
+#destinations_url = 
 
 # Retrieve access_token from Umbrella Management API; lasts 1 hour.
 def get_access_token():
