@@ -34,7 +34,7 @@ This script allows Cisco Umbrella users to better understand their DNS traffic. 
 ```cd umbrellauncommondomains```
 * Install the dependencies:
 ```pip install -r requirements.txt```
-* Add your API Key and Key Secret values to the .env file.
+* Add your API Key and Key Secret values to the .env file. (Simply copy/paste. They do not need to be formatted as strings.)
 * Run the Python script:
 ```python3 umbrella_uncommon_domains.py```
 * Upon completion, the terminal will display the message "Uncommon domains have been written to uncommon_domains.csv in your current directory." You should see a CSV named uncommon_domains.csv in the same directory, which you can open to see your network's uncommon domains.
