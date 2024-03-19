@@ -1,9 +1,12 @@
 # UmbrellaUncommonDomains
 This script allows Cisco Umbrella users to better understand their DNS traffic. The script retrieves the Top Destinations reported by your Umbrella account over the past week, filters for domains only (no IP addresses), and compares it to Umbrella's Top 1 Million Domains. The result is a CSV containing "uncommon domains" in your network, aka, DNS requests in your network that are not part of Umbrella's Top 1 Million. 
 
-## Audience
-* Cisco Umbrella users (customers)
-* Cisco DevNet community (sandbox users)
+## Use Case
+Umbrella customers have a vested interest in DNS visibility and security. While most companies could use assistance filtering the massive amounts of internet traffic going in and out of their network, this particular use case was inspired by the aftermath of the [2021 colonial pipeline attack in the U.S.] (https://www.bbc.com/news/technology-57063636).
+
+Afterward, the TSA issued (and has since re-issued) a Security Directive for oil and natural gas pipeline cybersecurity that challenged utility companies to better understand their DNS traffic.
+
+Umbrella customers using this script can quickly and easily discover uncommon DNS requests to proactively investigate without the overwhelm.
 
 ## Requirements
 * Access to active Cisco Umbrella account OR Cisco DevNet Umbrella sandbox:
@@ -39,13 +42,13 @@ This script allows Cisco Umbrella users to better understand their DNS traffic. 
 ```python3 umbrella_uncommon_domains.py```
 * Upon completion, the terminal will display the message "Uncommon domains have been written to uncommon_domains.csv in your current directory." You should see a CSV named uncommon_domains.csv in the same directory, which you can open to see your network's uncommon domains.
 
-### Testing
+## Testing
 This script has been tested on Windows 11 and Sanoma 14.3 (Mac) but should work on any OS.
 
-### Contributors
+## Contributors
 Erika Dietrick
 
-### License
+## License
 Copyright 2024 Erika Dietrick
 
 Licensed under the Apache License, Version 2.0 (the "License");
