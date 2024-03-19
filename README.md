@@ -8,7 +8,7 @@ This script allows Cisco Umbrella users to better understand their DNS traffic. 
 ## Requirements
 * Access to active Cisco Umbrella account OR Cisco DevNet Umbrella sandbox:
 * Umbrella Admin API key with minimum scope of Destinations: Read-Only
-* VS Code 2022 (or IDE of your choice)
+* VS Code 1.87.0 (or IDE of your choice)
 * Python 3.12.1
 * Python libraries listed in '''requirements.txt''' (see below, Run Project, to install)
 
