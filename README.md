@@ -29,7 +29,7 @@ This script allows Cisco Umbrella users to better understand their DNS traffic. 
     
 ### Run Project
 * Clone this repository:
-```git clone https://github.com/erdietri/UncommonDNSRequests.git```
+```git clone https://github.com/erdietri/UmbrellaUncommonDomains.git```
 * Navigate to the project directory:
 ```cd umbrellauncommondomains```
 * Install the dependencies:
