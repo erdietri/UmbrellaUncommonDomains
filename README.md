@@ -4,7 +4,7 @@ This script allows Cisco Umbrella users to better understand their DNS traffic. 
 ## Use Case
 Umbrella customers have a vested interest in DNS visibility and security. While most companies could use assistance filtering the massive amounts of internet traffic going in and out of their network, this particular use case was inspired by the aftermath of the <a href="https://www.bbc.com/news/technology-57063636">2021 colonial pipeline attack in the U.S.</a>
 
-Afterward, the TSA issued (and has since re-issued) a Security Directive for oil and natural gas pipeline cybersecurity that challenged utility companies to better understand their DNS traffic.
+Afterward, the TSA issued (and has since re-issued) a <a href="https://www.tsa.gov/sites/default/files/tsa-sd-pipeline-2021-02d-w-memo_07_27_2023.pdf">Security Directive</a> for oil and natural gas pipeline cybersecurity that challenged utility companies to better understand their DNS traffic.
 
 Umbrella customers using this script can quickly and easily discover uncommon DNS requests to proactively investigate without the overwhelm.
 
