@@ -2,7 +2,7 @@
 This script allows Cisco Umbrella users to better understand their DNS traffic. The script retrieves the Top Destinations reported by your Umbrella account over the past week (up to 1000 domains), filters for domains only (no IP addresses), and compares it to Umbrella's Top 1 Million Domains. The result is a CSV containing "uncommon domains" in your network, aka, DNS requests in your network that are not part of Umbrella's Top 1 Million. 
 
 ## Use Case
-Umbrella customers have a vested interest in DNS visibility and security. While most companies could use assistance filtering the massive amounts of internet traffic going in and out of their network, this particular use case was inspired by the aftermath of the [2021 colonial pipeline attack in the U.S.] (https://www.bbc.com/news/technology-57063636).
+Umbrella customers have a vested interest in DNS visibility and security. While most companies could use assistance filtering the massive amounts of internet traffic going in and out of their network, this particular use case was inspired by the aftermath of the [2021 colonial pipeline attack in the U.S] (https://www.bbc.com/news/technology-57063636).
 
 Afterward, the TSA issued (and has since re-issued) a Security Directive for oil and natural gas pipeline cybersecurity that challenged utility companies to better understand their DNS traffic.
 
