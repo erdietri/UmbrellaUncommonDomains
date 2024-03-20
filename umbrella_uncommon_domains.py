@@ -30,7 +30,7 @@ def generate_access_token():
 
     return access_token
 
-# Get the Top Destinations visited from 7 days ago until now. Top 100 domains are returned.
+# Get the Top Destinations visited from 7 days ago until now. Top 1000 domains are returned.
 def get_top_destinations(access_token):  
     
     headers = {
@@ -43,7 +43,7 @@ def get_top_destinations(access_token):
         "from": "-7days",
         "to": "now",
         "offset": "0",
-        "limit": 100
+        "limit": 1000
     }
     
     top_destinations_request = requests.get(top_destinations_endpoint, headers=headers,params=params)
