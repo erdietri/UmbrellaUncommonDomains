@@ -10,7 +10,7 @@ Umbrella customers using this script can quickly and easily discover uncommon DN
 
 ## Requirements
 * Access to active Cisco Umbrella account OR Cisco DevNet Umbrella sandbox:
-* Umbrella Admin API key with minimum scope of Destinations: Read-Only
+* Umbrella Admin API key with minimum scope of Reports > Aggregation (Read-Only).
 * VS Code 1.87.0 (or IDE of your choice)
 * Python 3.12.1
 * Python libraries listed in '''requirements.txt''' (see below, Run Project, to install)
