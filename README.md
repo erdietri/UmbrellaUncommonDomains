@@ -43,7 +43,7 @@ Umbrella customers using this script can quickly and easily discover uncommon DN
 * Upon completion, the terminal will display the message "Uncommon domains have been written to uncommon_domains.csv in your current directory." You should see a CSV named uncommon_domains.csv in the same directory, which you can open to see your network's uncommon domains.
 
 ## Testing
-This script has been tested on Windows 11 and Sanoma 14.3 (Mac) but should work on any OS.
+This script has been tested on Windows 11 and Sanoma 14.3 (Mac) but should work on any OS. This repository contains an example of the resulting output after running this script called example_uncommon_domains.csv.
 
 ## Contributors
 Erika Dietrick
