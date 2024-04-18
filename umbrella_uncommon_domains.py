@@ -85,7 +85,7 @@ def top_destinations_to_csv(top_destinations):
 def get_top_million():
 
     # API call to get Umbrella Top 1 Million as a zip file
-    get_top_1million_zip = requests.get("http://s3-us-west-1.amazonaws.com/umbrella-static/top-1m.csv.zip")
+    get_top_1million_zip = requests.get("https://s3-us-west-1.amazonaws.com/umbrella-static/top-1m.csv.zip")
 
     # Write the zip file to disk
     open('top-1m.csv.zip', 'wb').write(get_top_1million_zip.content)
