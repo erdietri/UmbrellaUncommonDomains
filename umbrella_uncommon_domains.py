@@ -25,14 +25,15 @@ if secret_files:
         if os.path.isfile(secrets_path + file_name):
             with open(secrets_path + file_name, 'r') as f:
                 content = f.readlines()
-                content_json = json.loads(content[0])
-                print(content_json)
-                client_key = content_json['key']
-                client_secret = content_json['secret']
-                secrets[file_name] = value
-                print(client_key)
-                print(client_secret)
-
+               f.close()
+print(content)
+content_json = json.loads(content[0])
+print(content_json)
+client_key = content_json['key']
+client_secret = content_json['secret']
+secrets[file_name] = value
+print(client_key)
+print(client_secret)
 # Environmental variables should contain your org's values in .env file.
 #client_key = os.environ['API_KEY']
 #client_secret = os.environ['KEY_SECRET']
