@@ -25,7 +25,7 @@ if secret_files:
         if os.path.isfile(secrets_path + file_name):
             with open(secrets_path + file_name, 'r') as f:
                 content = f.readlines()
-               f.close()
+                f.close()
 print(content)
 content_json = json.loads(content[0])
 print(content_json)
