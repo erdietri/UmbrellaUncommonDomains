@@ -24,8 +24,9 @@ if secret_files:
         if os.path.isfile(secrets_path + file_name):
             with open(secrets_path + file_name, 'r') as f:
                 content = f.readlines()
-                client_key = content[0]
-                client_secret = content[1]
+                content_json = content[0]
+                client_key = content_json['key']
+                client_secret = content_json['secret']
                 secrets[file_name] = value
                 print(client_key)
                 print(client_secret)
