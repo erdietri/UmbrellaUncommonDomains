@@ -7,6 +7,7 @@ import os
 import pandas
 import zipfile
 from IPy import IP
+import json
 
 # This script is written under the assumption that it will be run on a weekly basis.
 # Access token generation also requires that the user has a valid Umbrella API Key and Secret: https://developer.cisco.com/docs/cloud-security/#!authentication/manage-api-keys
@@ -24,7 +25,7 @@ if secret_files:
         if os.path.isfile(secrets_path + file_name):
             with open(secrets_path + file_name, 'r') as f:
                 content = f.readlines()
-                content_json = content[0].json
+                content_json = json.loads(content[0])
                 print(content_json)
                 client_key = content_json['key']
                 client_secret = content_json['secret']
