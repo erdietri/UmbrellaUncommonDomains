@@ -13,9 +13,23 @@ from IPy import IP
 
 load_dotenv()
 
+secrets = {}
+
+secrets_path = '/etc/secret/'
+
+secret_files = os.listdir(secrets_path)
+
+if secret_files:
+    for file_name in secret_files:
+        if os.path.isfile(secrets_path + file_name):
+            with open(secrets_path + file_name, 'r') as f:
+                client_key = f.readlines()
+                client_secret = f.readlines()
+                secrets[file_name] = value
+
 # Environmental variables should contain your org's values in .env file.
-client_key = os.environ['API_KEY']
-client_secret = os.environ['KEY_SECRET']
+#client_key = os.environ['API_KEY']
+#client_secret = os.environ['KEY_SECRET']
 
 # Relevant v2 Umbrella API endpoints
 base_url = "https://api.umbrella.com"
