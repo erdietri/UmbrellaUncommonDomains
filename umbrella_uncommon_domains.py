@@ -23,9 +23,12 @@ if secret_files:
     for file_name in secret_files:
         if os.path.isfile(secrets_path + file_name):
             with open(secrets_path + file_name, 'r') as f:
-                client_key = f.readlines()
-                client_secret = f.readlines()
+                content = f.readlines()
+                client_key = content[0]
+                client_secret = content[1]
                 secrets[file_name] = value
+                print(client_key)
+                print(client_secret)
 
 # Environmental variables should contain your org's values in .env file.
 #client_key = os.environ['API_KEY']
