@@ -26,12 +26,10 @@ if secret_files:
             with open(secrets_path + file_name, 'r') as f:
                 value = f.read()
                 secrets[file_name] = value
-print(secrets)
+
 client_key = secrets['key']
 client_secret = secrets['secret']
-secrets[file_name] = value
-print(client_key)
-print(client_secret)
+
 # Environmental variables should contain your org's values in .env file.
 #client_key = os.environ['API_KEY']
 #client_secret = os.environ['KEY_SECRET']
