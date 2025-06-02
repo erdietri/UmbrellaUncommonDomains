@@ -24,7 +24,7 @@ if secret_files:
     for file_name in secret_files:
         if os.path.isfile(secrets_path + file_name):
             with open(secrets_path + file_name, 'r') as f:
-                content = f.readlines()
+                value = f.read()
                 secrets[file_name] = value
 print(secrets)
 client_key = secrets['key']
